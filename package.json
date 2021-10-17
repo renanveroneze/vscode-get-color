@@ -2,7 +2,9 @@
 	"author": {
 		"name": "Renan Veroneze"
 	},
+	"repository": "git@github.com:renanveroneze/vscode-get-color.git",
 	"name": "get-color",
+	"publisher": "renan-veroneze",
 	"displayName": "Get Color",
 	"description": "Get the color list from file",
 	"version": "0.0.1",
