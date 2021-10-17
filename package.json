@@ -7,7 +7,7 @@
 	"publisher": "renan-veroneze",
 	"displayName": "Get Color",
 	"description": "Get the color list from file",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.61.0"
 	},

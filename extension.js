@@ -1,12 +1,14 @@
 const vscode = require( 'vscode' )
 const fs = require( 'fs' )
+const path = require( 'path' )
+
 
 function activate( context ) {
 
     let disposable = vscode.commands.registerCommand( 'get-color.get-color', async function () {
 
         const folder = vscode.workspace.workspaceFolders[ 0 ].uri.path
-        const profile = fs.readFileSync( `${folder}/_sources/styles/vars/1.colors.styl` )
+        const profile = fs.readFileSync( path.join( folder, '_sources', 'styles', 'vars', '1.colors.styl' ).replace( /^\\/, '' ) )
             .toString()
             .replace( '$colors = {', '' )
             .replace( '}', '' )
@@ -14,7 +16,7 @@ function activate( context ) {
             .split( ',' )
             .filter( Boolean )
             .map( ( e ) => e.split( ':' ) )
-            .map( ( [ key, val ] ) => ( { "label": `${key}: ${val}`, value: `$colors.${key}` } ) )
+            .map( ( [ key, val ] ) => ( { "label": key, detail: val, value: `$colors.${key}` } ) )
 
         let selected_color = await vscode.window.showQuickPick( profile )
 
