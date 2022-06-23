@@ -8,8 +8,9 @@ function activate( context ) {
     let disposable = vscode.commands.registerCommand( 'get-color.get-color', async function () {
 
         const folder = vscode.workspace.workspaceFolders[ 0 ].uri.path
-        const profile = fs.readFileSync( path.join( folder, '_sources', 'styles', 'vars', '1.colors.styl' ).replace( /^\\/, '' ) )
+        const profile = fs.readFileSync( path.join( folder, '_sources', 'styles', 'vars', 'colors.styl' ).replace( /^\\/, '' ) )
             .toString()
+            .replace( /\/.*/g, '' )
             .replace( '$colors = {', '' )
             .replace( '}', '' )
             .replace( /\s/g, '' )
